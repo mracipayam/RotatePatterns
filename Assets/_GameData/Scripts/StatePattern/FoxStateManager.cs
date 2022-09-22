@@ -6,22 +6,25 @@ namespace _GameData.Scripts.StatePattern
     {
         private FoxBaseState _currentState;
         
-        public FoxIdleState IdleState = new FoxIdleState();
-        public FoxRunningState RunningState = new FoxRunningState();
+        public FoxIdleState IdleState;
+        public FoxRunningState RunningState;
+        
         private void Start()
         {
+            IdleState = new FoxIdleState(this);
+            RunningState = new FoxRunningState(this);
             _currentState = IdleState;
-            _currentState.EnterState(this);
+            _currentState.EnterState();
         }
         private void Update()
         {
-            _currentState.UpdateState(this);
+            _currentState.UpdateState();
         }
         
         public void SwitchState(FoxBaseState state)
         {
             _currentState = state;
-            _currentState.EnterState(this);
+            _currentState.EnterState();
         }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -11,12 +10,12 @@ namespace _GameData.Scripts.ObserverPattern
         private int point;
         private void OnEnable()
         {
-            GameEventManager.instance.OnPointIncrease += OnPointIncreaseHandler;
+            GameEventManager.OnPointIncrease += OnPointIncreaseHandler;
         }
 
         private void OnDisable()
         {
-            GameEventManager.instance.OnPointIncrease -= OnPointIncreaseHandler;
+            GameEventManager.OnPointIncrease -= OnPointIncreaseHandler;
         }
 
         private void OnPointIncreaseHandler()

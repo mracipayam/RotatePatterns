@@ -5,14 +5,12 @@ namespace _GameData.Scripts.ObserverPattern
 {
     public class GameEventManager : MonoBehaviour
     {
-        public static GameEventManager instance;
+        public static Action OnPointIncrease;
+        public static void RaisePointIncrease() => OnPointIncrease?.Invoke();
 
-        private void Awake()
+        private void OnDestroy()
         {
-            instance = this;
+            OnPointIncrease = null;
         }
-
-        public Action OnPointIncrease;
-        public void RaisePointIncrease() => OnPointIncrease?.Invoke();
     }
 }
